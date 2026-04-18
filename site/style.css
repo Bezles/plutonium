@@ -71,6 +71,7 @@ button:hover {
 
 #window-content {
   text-align: center;
+  width: min(1000px, 95vw);
 }
 
 #close-btn {
