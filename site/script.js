@@ -1,6 +1,8 @@
 const doc = document;
 const txt = document.getElementById("txt");
 
+const proxyDomain = "https://plutonium-proxy.onrender.com";
+
 doc.addEventListener("click", () => txt.focus());
 
 const input = document.getElementById("txt");
@@ -34,14 +36,12 @@ function processCommand(command) {
       `,
     });
   } else if (command.startsWith("surf ")) {
-    const rawUrl = command.slice(5).trim();
+    let rawUrl = command.slice(5).trim();
     if (!rawUrl.startsWith("http")) {
       rawUrl = "https://" + rawUrl;
     }
 
-    const encodedUrl = encodeURIComponent(rawUrl);
-    const proxyDomain = "https://plutonium-proxy.onrender.com"; // ← REPLACE with your Render URL
-    const proxyEndpoint = `${proxyDomain}/proxy?url=${encodedUrl}`;
+    const proxyEndpoint = `${proxyDomain}/proxy?url=${encodeURIComponent(rawUrl)}`;
 
     showWindow({
       title: "Surf",
@@ -67,73 +67,4 @@ function processCommand(command) {
         content: `
           <p>Available commands:</p>
           <ul>
-            <li>music: Open the music player window</li>
-            <li>help: Show this help message</li>
-            <li>games: Open the games window</li>
-            <li>config: Open the configuration window</li>
-            <li>links: Open the links window</li>
-            <li>media: Open the media window</li>
-            <li>surf: Open the proxy interface</li>
-            <li>surf [webpage]: Surf to a specific webpage</li>
-          </ul>
-        `,
-      },
-      games: {
-        title: "Games",
-        content: "<p>Placeholder for games</p>",
-      },
-      config: {
-        title: "Configuration",
-        content: "<p>Placeholder for configuration settings</p>",
-      },
-      links: {
-        title: "Links",
-        content: "<p>Placeholder for useful links</p>",
-      },
-      media: {
-        title: "Media",
-        content: "<p>Placeholder for media player</p>",
-      },
-    };
-
-    if (apps[command]) {
-      showWindow(apps[command]);
-    } else {
-      welcomeP.textContent = "command not found";
-    }
-  }
-}
-
-function showWindow(app) {
-  const appContent = document.getElementById("app-content");
-  appContent.innerHTML = `<h1>${app.title}</h1>${app.content}`;
-  windowDiv.style.display = "flex";
-  document.body.classList.add("window-open");
-  setTimeout(() => {
-    windowDiv.classList.add("visible");
-  }, 10);
-
-  // Optional: attach the "Go" button for the simple surf input
-  const goBtn = document.getElementById("proxy-go-btn");
-  if (goBtn) {
-    goBtn.onclick = () => {
-      const rawUrl = document.getElementById("proxy-url-input").value.trim();
-      if (rawUrl) {
-        processCommand(`surf ${rawUrl}`);
-      }
-    };
-  }
-}
-
-function hideWindow() {
-  windowDiv.classList.remove("visible");
-  document.body.classList.remove("window-open");
-  windowDiv.addEventListener(
-    "transitionend",
-    function handler() {
-      windowDiv.removeEventListener("transitionend", handler);
-      windowDiv.style.display = "none";
-    },
-    { once: true }
-  );
-}
+            <
