@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Plutonium Terminal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="nav-buttons">
-        <button onclick="processCommand('music')">Music</button>
-        <button onclick="processCommand('games')">Games</button>
-        <button onclick="processCommand('config')">Config</button>
-        <button onclick="processCommand('links')">Links</button>
-        <button onclick="processCommand('media')">Media</button>
-        <button onclick="processCommand('surf')">Surf</button>
-    </div>
-    
-    <div id="terminal">
-        <h2>> plutonium_v1</h2>
-        <p id="welcome-p">welcome</p>
-        
-        <span>$</span> <input id="txt" type="text" placeholder="type help" autofocus>
-    </div>
-    
-    <div id="window" style="display: none;">
-        <div id="window-content">
-            <button id="close-btn">Close</button>
-            <div id="app-content"></div>
-        </div>
-    </div>
+  <div id="nav-buttons">
+    <button onclick="processCommand('music')">Music</button>
+    <button onclick="processCommand('games')">Games</button>
+    <button onclick="processCommand('config')">Config</button>
+    <button onclick="processCommand('links')">Links</button>
+    <button onclick="processCommand('media')">Media</button>
+    <button onclick="processCommand('surf')">Surf</button>
+  </div>
 
-    <script src="script.js"></script>
+  <div id="terminal">
+    <h2>> plutonium_v1</h2>
+    <p id="welcome-p">welcome</p>
+    <span>$</span> <input id="txt" type="text" placeholder="type help" autofocus>
+  </div>
 
+  <div id="window" style="display: none;">
+    <div id="window-content">
+      <button id="close-btn">Close</button>
+      <div id="app-content"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
