@@ -1,7 +1,7 @@
 const doc = document;
 const txt = document.getElementById("txt");
 
-const proxyDomain = "https://plutonium-proxy.onrender.com";
+const proxyDomain = "https://plutonium-prx.onrender.com";
 
 doc.addEventListener("click", () => txt.focus());
 
